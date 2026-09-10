@@ -40,27 +40,27 @@ pipeline {
                     }
                 }
             }
+            post {
+                always {
+                    // Genera y publica el reporte de Allure en Jenkins
+                    allure([
+                        includeProperties: false,
+                        results: [[path: 'allure-results']]
+                    ])
+                }
+            }
         }
     }
 
     post {
         always {
             echo "Pipeline finished — Environment: ${params.ENVIRONMENT}"
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'playwright-report',
-                reportFiles: 'index.html',
-                reportName: 'Playwright HTML Report',
-                reportTitles: "Test Execution Report - ${params.ENVIRONMENT}"
-            ])
         }
         success {
             echo 'All Playwright tests passed'
         }
         failure {
-            echo 'Playwright execution failed — check HTML report'
+            echo 'Playwright execution failed — check Allure report'
         }
     }
 }
