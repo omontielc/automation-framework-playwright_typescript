@@ -1,0 +1,19 @@
+{
+  "name": "playwright-ts-framework",
+  "version": "1.0.0",
+  "description": "Automation Framework UI + API con Playwright y TypeScript (POM + Service Object Model)",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test tests/front",
+    "test:api": "playwright test tests/back",
+    "test:headed": "playwright test --headed",
+    "test:ui:headed": "playwright test tests/front --headed",
+    "test:report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "typescript": "^5.5.0",
+    "@types/node": "^20.14.0"
+  }
+}
