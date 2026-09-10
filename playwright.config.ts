@@ -10,8 +10,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
   reporter: [
-    ['html', { open: 'never' }],   // equivalente al reporte Allure que ya usas
+    ['html', { open: 'never' }],
     ['list'],
+    ['allure-playwright', { outputFolder: 'allure-results' }],
   ],
   use: {
     baseURL: process.env.BASE_URL ?? 'https://www.saucedemo.com',
