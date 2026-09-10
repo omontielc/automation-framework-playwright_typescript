@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS 20'
-    }
-
     parameters {
         choice(
             name: 'ENVIRONMENT',
@@ -14,7 +10,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'main',
