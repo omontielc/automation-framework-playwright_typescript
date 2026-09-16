@@ -30,17 +30,4 @@ export const config = {
   baseUrlUISauce: required('BASE_URL_UI_SAUCE'),
   baseUrlUIBlaze: required('BASE_URL_UI_BLAZE'),
   baseUrlApi: required('BASE_URL_API'),
-
-  // SauceDemo credentials
-  sauce: {
-    user: required('SAUCE_USER'),
-    password: required('SAUCE_PASSWORD'),
-    lockedUser: required('SAUCE_LOCKED_USER'),
-  },
-
-  // DemoBlaze credentials
-  blaze: {
-    user: required('BLAZE_USER'),
-    password: required('BLAZE_PASSWORD'),
-  },
 };

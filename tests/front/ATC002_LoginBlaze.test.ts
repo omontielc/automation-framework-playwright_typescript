@@ -1,5 +1,9 @@
-import { test } from '@front/fixtures/frontFixtures';
-import { config } from '../../src/config/env'; 
+
+import { test, expect } from '@front/fixtures/frontFixtures';
+import { config } from '@config/env';
+import { getTestData } from '@utils/testDataReader';
+import {ATC002_Login } from '@front/types/demoBlaze';
+import blazeData from '@testData/demoBlazeTestData.json';
 
 /**
  * Test suite for DemoBlaze login and logout.
@@ -16,9 +20,10 @@ test.describe('DemoBlaze - Login and Logout', () => {
    * Test to verify the complete login and logout flow.
    */
   test('User can login and logout successfully.', async ({ loginBlazePage }) => {
+    const testData = getTestData<ATC002_Login>(blazeData, 'ATC002_Login');
     await loginBlazePage.expectLoaded();
-    await loginBlazePage.login(config.blaze.user, config.blaze.password);
-    await loginBlazePage.expectLoggedIn(config.blaze.user);
+    await loginBlazePage.login(testData.user, testData.password);
+    await loginBlazePage.expectLoggedIn(testData.user);
     await loginBlazePage.logout();
     await loginBlazePage.expectLoggedOut();
   });

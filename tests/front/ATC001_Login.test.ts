@@ -1,5 +1,8 @@
 import { test, expect } from '@front/fixtures/frontFixtures';
-import { config } from '../../src/config/env'; 
+import { config } from '@config/env';
+import { getTestData } from '@utils/testDataReader';
+import {ATC001_Login } from '@front/types/SauceDemo';
+import sauceData from '@testData/sauceDemoTestData.json';
 
 /**
  * Test suite for SauceDemo login and basic inventory interactions.
@@ -18,7 +21,8 @@ test.describe('SauceDemo - Login', () => {
    * and displays items correctly.
    */
   test('Login successfully and navigate to the inventory.', async ({ loginPage, inventoryPage }) => {
-    await loginPage.login(config.sauce.user, config.sauce.password);
+    const testData = getTestData<ATC001_Login>(sauceData, 'ATC001_LoginSuccess');
+    await loginPage.login(testData.user, testData.password);
     await inventoryPage.expectLoaded();
     expect(await inventoryPage.itemCount()).toBeGreaterThan(0);
   });
@@ -27,12 +31,14 @@ test.describe('SauceDemo - Login', () => {
    * Test to verify that a locked out user displays the appropriate error message.
    */
   test('Locked user sees error message.', async ({ loginPage }) => {
-    await loginPage.login('locked_out_user', 'secret_sauce');
+    const testData = getTestData<ATC001_Login>(sauceData, 'ATC001_LoginLocked');
+    await loginPage.login(testData.user, testData.password);
     await loginPage.expectErrorMessage('locked out');
   });
 
   test('Invalid credentials display an error message.', async ({ loginPage }) => {
-    await loginPage.login('invalid_user', 'invalid_password');
+    const testData = getTestData<ATC001_Login>(sauceData, 'ATC001_LoginInvalid');
+    await loginPage.login(testData.user, testData.password);
     await loginPage.expectErrorMessage('Username and password do not match');
   });
 
@@ -40,7 +46,8 @@ test.describe('SauceDemo - Login', () => {
    * Test to verify that adding a product from the inventory updates the shopping cart counter.
    */
   test('Adding a product updates the cart counter.', async ({ loginPage, inventoryPage }) => {
-    await loginPage.login('standard_user', 'secret_sauce');
+    const testData = getTestData<ATC001_Login>(sauceData, 'ATC001_LoginSuccess');
+    await loginPage.login(testData.user, testData.password);
     await inventoryPage.addFirstItemToCart();
     await inventoryPage.expectCartCount('1');
   });

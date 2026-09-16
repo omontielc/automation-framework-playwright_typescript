@@ -1,0 +1,14 @@
+{
+  "ATC001_LoginSuccess": {
+    "user": "standard_user",
+    "password": "secret_sauce"
+  },
+  "ATC001_LoginLocked": {
+    "user": "locked_out_user",
+    "password": "secret_sauce"
+  },
+  "ATC001_LoginInvalid": {
+    "user": "invalid_user",
+    "password": "wrong_password"
+  }
+}

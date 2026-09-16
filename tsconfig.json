@@ -13,7 +13,10 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@front/*": ["src/front/*"],
-      "@back/*": ["src/back/*"]
+      "@back/*": ["src/back/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"],
+      "@testData/*": ["src/testData/*"]
     }
   },
   "include": ["src", "tests", "playwright.config.ts"]
