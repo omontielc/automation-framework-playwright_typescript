@@ -16,6 +16,7 @@
 /playwright-report/
 /blob-report/
 /playwright/.last-run.json
+/allure-results/
 
 # =================
 # MCP (Model Context Protocol) Logs & Temp Files
@@ -27,7 +28,8 @@
 # Environment & Secrets
 # =================
 .env
-.env.local
+.env.*
+!.env.example
 
 # =================
 # Logs & Debug
@@ -49,4 +51,5 @@ pnpm-debug.log*
 # Operating System Files
 # =================
 .DS_Store
+Thumbs.db
 Thumbs.db

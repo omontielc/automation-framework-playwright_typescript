@@ -1,4 +1,5 @@
 import { test, expect } from '@front/fixtures/frontFixtures';
+import { config } from '../../src/config/env'; 
 
 /**
  * Test suite for SauceDemo login and basic inventory interactions.
@@ -8,7 +9,7 @@ test.describe('SauceDemo - Login', () => {
    * Hook that runs before each test to navigate to the base URL using the loginPage fixture.
    */
   test.beforeEach(async ({ loginPage }) => {
-    await loginPage.goto('/');
+    await loginPage.goto(config.baseUrlUISauce);
     await loginPage.expectLoaded();
   });
 
@@ -17,7 +18,7 @@ test.describe('SauceDemo - Login', () => {
    * and displays items correctly.
    */
   test('Login successfully and navigate to the inventory.', async ({ loginPage, inventoryPage }) => {
-    await loginPage.login('standard_user', 'secret_sauce');
+    await loginPage.login(config.sauce.user, config.sauce.password);
     await inventoryPage.expectLoaded();
     expect(await inventoryPage.itemCount()).toBeGreaterThan(0);
   });
