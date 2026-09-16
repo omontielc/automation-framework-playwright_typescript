@@ -61,7 +61,11 @@ jobs:
         name: allure-report
         path: allure-report
         retention-days: 30
-    
+
+    - name: Debug - list root directory
+      if: always()
+      run: ls -la
+
     - name: Upload Playwright Report Artifact for Pages
       uses: actions/upload-pages-artifact@v3
       if: always()
