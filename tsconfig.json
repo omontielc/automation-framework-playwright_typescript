@@ -15,8 +15,7 @@
       "@front/*": ["src/front/*"],
       "@back/*": ["src/back/*"],
       "@config/*": ["src/config/*"],
-      "@utils/*": ["src/utils/*"],
-      "@testData/*": ["src/testData/*"]
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src", "tests", "playwright.config.ts"]

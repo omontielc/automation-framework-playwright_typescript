@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { ProductService } from '@back/services/ProductService';
-import { Product } from '@back/types/Product';
+import { Product, CreateProductPayload } from '@back/types/Product';
+import { getTestData } from '@utils/testDataReader';
+import productApiData from '@back/testData/productApiTestData.json';
 
 /**
  * Test suite for Fake Store API Products endpoints.
@@ -37,23 +39,17 @@ test.describe('Fake Store API - Products', () => {
    * Test to verify that POST /products returns a 201 status code and product data.
    */
   test('POST /products creates a product and returns 201', async () => {
-    const product = {
-      title: 'QA Test Product',
-      price: 29.99,
-      description: 'Product created by an automated API test.',
-      category: 'electronics',
-      image: 'https://example.com/qa-product.png',
-    };
+    const testData = getTestData<CreateProductPayload>(productApiData, 'ATC002_CreateProduct');
 
-    const response = await productService.create(product);
+    const response = await productService.create(testData);
     expect(response.status()).toBe(201);
 
     const created: Product = await response.json();
     expect(created).toMatchObject({
       id: expect.any(Number),
-      title: product.title,
-      price: product.price,
-      category: product.category,
+      title: testData.title,
+      price: testData.price,
+      category: testData.category,
     });
   });
 });

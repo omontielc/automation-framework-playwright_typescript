@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { UserService } from '@back/services/UserService';
-import { User } from '@back/types/User';
+import { User, CreateUserPayload } from '@back/types/User';
+import { getTestData } from '@utils/testDataReader';
+import userApiData from '@back/testData/userApiTestData.json';
 
 /**
  * Test suite for JSONPlaceholder Users API endpoints.
@@ -9,7 +11,7 @@ test.describe('JSONPlaceholder - Users API', () => {
   let userService: UserService;
 
   /**
-   * Hook that runs before each test to initialize the UserService instance 
+   * Hook that runs before each test to initialize the UserService instance
    * using Playwright's built-in request context.
    */
   test.beforeEach(async ({ request }) => {
@@ -17,7 +19,7 @@ test.describe('JSONPlaceholder - Users API', () => {
   });
 
   /**
-   * Test to verify that a GET request to /users returns a 200 status code 
+   * Test to verify that a GET request to /users returns a 200 status code
    * and a non-empty list of users.
    */
   test('GET /users returns status 200 and a non-empty list', async () => {
@@ -29,7 +31,7 @@ test.describe('JSONPlaceholder - Users API', () => {
   });
 
   /**
-   * Test to verify that a GET request to /users/1 returns a specific user 
+   * Test to verify that a GET request to /users/1 returns a specific user
    * matching the expected shape, types, and structure.
    */
   test('GET /users/1 returns a specific user with the expected shape', async () => {
@@ -48,18 +50,15 @@ test.describe('JSONPlaceholder - Users API', () => {
   });
 
   /**
-   * Test to verify that a POST request to create a user successfully returns 
+   * Test to verify that a POST request to create a user successfully returns
    * a 201 status code and echoes the created user details.
    */
   test('POST /users creates a user and returns 201', async () => {
-    const response = await userService.create({
-      name: 'Osiris QA',
-      username: 'osiris.qa',
-      email: 'osiris.qa@example.com',
-    });
+    const testData = getTestData<CreateUserPayload>(userApiData, 'ATC001_CreateUser');
+    const response = await userService.create(testData);
 
     expect(response.status()).toBe(201);
     const created = await response.json();
-    expect(created.name).toBe('Osiris QA');
+    expect(created.name).toBe(testData.name);
   });
 });

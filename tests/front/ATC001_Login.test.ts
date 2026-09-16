@@ -2,7 +2,7 @@ import { test, expect } from '@front/fixtures/frontFixtures';
 import { config } from '@config/env';
 import { getTestData } from '@utils/testDataReader';
 import {ATC001_Login } from '@front/types/SauceDemo';
-import sauceData from '@testData/sauceDemoTestData.json';
+import sauceData from '@front/testData/sauceDemoTestData.json';
 
 /**
  * Test suite for SauceDemo login and basic inventory interactions.

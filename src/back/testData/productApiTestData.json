@@ -1,0 +1,9 @@
+{
+  "ATC002_CreateProduct": {
+    "title": "QA Test Product",
+    "price": 29.99,
+    "description": "Product created by an automated API test.",
+    "category": "electronics",
+    "image": "https://example.com/qa-product.png"
+  }
+}

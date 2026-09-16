@@ -3,7 +3,7 @@ import { test, expect } from '@front/fixtures/frontFixtures';
 import { config } from '@config/env';
 import { getTestData } from '@utils/testDataReader';
 import {ATC002_Login } from '@front/types/demoBlaze';
-import blazeData from '@testData/demoBlazeTestData.json';
+import blazeData from '@front/testData/demoBlazeTestData.json';
 
 /**
  * Test suite for DemoBlaze login and logout.

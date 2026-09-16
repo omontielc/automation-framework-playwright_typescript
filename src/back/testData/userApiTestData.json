@@ -1,0 +1,7 @@
+{
+  "ATC001_CreateUser": {
+    "name": "Osiris QA",
+    "username": "osiris.qa",
+    "email": "osiris.qa@example.com"
+  }
+}
