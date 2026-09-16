@@ -19,6 +19,12 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
+    # Injected once for the whole job, available to every step below,
+    # since env.ts requires these variables to be present via process.env
+    env:
+      BASE_URL_UI_SAUCE: ${{ secrets.BASE_URL_UI_SAUCE }}
+      BASE_URL_UI_BLAZE: ${{ secrets.BASE_URL_UI_BLAZE }}
+      BASE_URL_API: ${{ secrets.BASE_URL_API }}
 
     steps:
     - uses: actions/checkout@v4
