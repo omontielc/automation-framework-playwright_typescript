@@ -62,10 +62,6 @@ jobs:
         path: allure-report
         retention-days: 30
 
-    - name: Debug - list root directory
-      if: always()
-      run: ls -la
-
     - name: Upload Playwright Report Artifact for Pages
       uses: actions/upload-pages-artifact@v3
       if: always()
@@ -80,20 +76,4 @@ jobs:
           github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: 'Playwright tests completed. [View full report](../../actions/runs/${{ github.run_id }})'
-          });
-
-  deploy:
-    needs: test
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            repo:
