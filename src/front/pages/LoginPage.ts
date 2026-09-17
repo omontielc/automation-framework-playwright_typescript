@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from '@front/base/BasePage';
-import { LoginLocators } from 'src/front/Locators/LoginLocators';
+import { LoginLocators } from '@front/locators/LoginLocators';
 
 /**
  * Page Object class representing the Login page of the application.

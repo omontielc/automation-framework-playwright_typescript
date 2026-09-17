@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from '@front/base/BasePage';
-import { InventoryLocators } from '@front/Locators/InventoryLocators';
+import { InventoryLocators } from '@front/locators/InventoryLocators';
 
 /**
  * Page Object class representing the Inventory (Products) page of the application.

@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from '@front/base/BasePage';
-import { LoginBlazeLocators } from '@front/Locators/LoginBlazeLocators';
+import { LoginBlazeLocators } from '@front/locators/LoginBlazeLocators';
 
 /**
  * Page Object class representing the DemoBlaze login and logout flow.

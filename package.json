@@ -8,8 +8,7 @@
     "test:api": "playwright test tests/back",
     "test:headed": "playwright test --headed",
     "test:ui:headed": "playwright test tests/front --headed",
-    "test:report": "playwright show-report",
-    "typecheck": "tsc --noEmit"
+    "test:report": "playwright show-report"
   },
   "devDependencies": {
     "@playwright/test": "^1.47.0",
